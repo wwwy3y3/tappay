@@ -26,7 +26,7 @@ export default class TappayService {
     https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-prime-api
   */
   public payByPrime(data: IPayByPrimeParams): Promise<IPayByPrimeResponse> {
-    return this.makeApiRequest("/tpc/partner/directpay/pay-by-prime", data)
+    return this.makeApiRequest("/tpc/payment/pay-by-prime", data)
     .then(response => response.data);
   }
 
@@ -34,14 +34,14 @@ export default class TappayService {
     https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-card-token-api
   */
   public payByCardToken(data: IPayByTokenParams): Promise<IPayByTokenResponse> {
-    return this.makeApiRequest("/tpc/partner/directpay/pay-by-token", data)
+    return this.makeApiRequest("/tpc/payment/pay-by-token", data)
     .then(response => response.data);
   }
 
   private makeApiRequest(url: string, data: any) {
     return axios.post(
       resolve(this.apiEndpoint, url),
-      {...data, partnerkey: this.apiKey},
+      {...data, partner_key: this.apiKey},
       {
       headers: {
         "Content-Type": "application/json",
