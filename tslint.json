@@ -14,6 +14,7 @@
     "object-literal-key-quotes": [true, "as-needed"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "arrow-parens": [true, "ban-single-arg-parens"],
-    "no-namespace": [true, "allow-declarations"]
+    "no-namespace": [true, "allow-declarations"],
+    "no-implicit-dependencies": [true, "dev"]
   }
 }
