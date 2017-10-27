@@ -3,6 +3,7 @@ import {resolve} from "url";
 import {IPayByPrimeParams, IPayByPrimeResponse} from "./interface/pay-by-prime";
 import {IPayByTokenParams, IPayByTokenResponse} from "./interface/pay-by-token";
 import {IRefundParams, IRefundResponse} from "./interface/refund";
+import {IRecordParams, IRecordResponse} from "./interface/records";
 
 // types & interfaces
 export type TAPPAY_ENV = "sandbox" | "production";
@@ -45,6 +46,7 @@ export default class TappayService {
 
   /**
    * refund
+   * https://docs.tappaysdk.com/tutorial/en/back.html#refund-api
    * @param data IRefundParams
    */
   public refund(data: IRefundParams): Promise<IRefundResponse> {
@@ -52,6 +54,16 @@ export default class TappayService {
     .then(response => response.data);
   }
 
+  public findRecords(data: IRecordParams): Promise<IRecordResponse> {
+    return this.makeApiRequest("/tpc/transaction/query", data)
+    .then(response => response.data);
+  }
+
+  /**
+   * makeApiRequest
+   * @param url api url
+   * @param data payload api required
+   */
   private makeApiRequest(url: string, data: any) {
     return axios.post(
       resolve(this.apiEndpoint, url),
