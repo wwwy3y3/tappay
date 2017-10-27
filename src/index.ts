@@ -1,2 +1,2 @@
 import Service from "./service";
-export default Service;
+export {Service};

@@ -1,4 +1,4 @@
-import TappayService from "../src";
+import {Service as TappayService} from "../src";
 import * as chai from "chai";
 
 const expect = chai.expect;

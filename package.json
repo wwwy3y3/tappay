@@ -1,12 +1,12 @@
 {
   "name": "tappay",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "tappay",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/Canner/tappay",
   "author": {
-    "name": "",
-    "email": "",
+    "name": "wwwy3y3",
+    "email": "wwwy3y3@gmail.com",
     "url": ""
   },
   "keywords": [

@@ -8,6 +8,14 @@ yarn install tappay
 ```
 
 ## usage
+### import
+``` js
+// typescript
+import {Service as TappayService} from "tappay";
+// or node (> v6)
+const {Service: TappayService} = require("tappay");
+```
+
 ### payByPrime
 ``` js
 const service = new TappayService({apiKey: API_KEY, env: "sandbox"});
