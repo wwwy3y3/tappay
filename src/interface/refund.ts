@@ -1,16 +1,12 @@
 export interface IRefundParams {
   /**
-   * Authentication key for each individual partner.
-   */
-  partner_key: string;
-  /**
    * Identifier for the transaction being refunded.
    */
   rec_trade_id: string;
   /**
    * Only required for partial refund.
    */
-  amount: number;
+  amount?: number;
 }
 
 export interface IRefundResponse {

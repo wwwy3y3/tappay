@@ -13,8 +13,10 @@ const MERCHANT_ID = process.env.TAPPAY_MERCHANT_ID;
 const TEST_PRIME = "test_3a2fb2b7e892b914a03c95dd4dd5dc7970c908df67a49527c0a648b2bc9";
 
 describe("api", () => {
+  let tradeRecordId: string;
   const cardSecrets: {cardKey?: string, cardToken?: string} = {};
   const service = new TappayService({apiKey: API_KEY, env: "sandbox"});
+
   it("should payByPrime", () => {
     return service.payByPrime({
       prime: TEST_PRIME,
@@ -52,6 +54,40 @@ describe("api", () => {
     .then(response => {
       expect(response.status).to.equal(0);
       expect(response.order_number).to.equal("test-order");
+      tradeRecordId = response.rec_trade_id;
+    });
+  });
+
+  it("should all findRecords", () => {
+    return service.findRecords()
+    .then(response => {
+      expect(response.status).to.equal(2);
+      expect(response.trade_records).to.have.lengthOf.at.least(2);
+    });
+  });
+
+  it("should findRecords with rec_trade_id", () => {
+    return service.findRecords({
+      filters: {
+        rec_trade_id: tradeRecordId
+      }
+    })
+    .then(response => {
+      expect(response.status).to.equal(2);
+      expect(response.trade_records).to.have.lengthOf(1);
+      expect(response.trade_records[0]).to.include({
+        rec_trade_id: tradeRecordId
+      });
+    });
+  });
+
+  it("should refund full amount", () => {
+    return service.refund({
+      rec_trade_id: tradeRecordId
+    })
+    .then(response => {
+      expect(response.status).to.equal(0);
+      expect(response.refund_amount).to.equal(100);
     });
   });
 });

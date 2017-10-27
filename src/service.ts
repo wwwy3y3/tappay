@@ -54,7 +54,11 @@ export default class TappayService {
     .then(response => response.data);
   }
 
-  public findRecords(data: IRecordParams): Promise<IRecordResponse> {
+  /**
+   * findRecords
+   * @param data IRecordParams, optional.
+   */
+  public findRecords(data?: IRecordParams): Promise<IRecordResponse> {
     return this.makeApiRequest("/tpc/transaction/query", data)
     .then(response => response.data);
   }
