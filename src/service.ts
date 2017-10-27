@@ -1,7 +1,8 @@
 import axios, {AxiosPromise} from "axios";
-import {IPayByPrimeParams, IPayByPrimeResponse} from "./pay-by-prime";
-import {IPayByTokenParams, IPayByTokenResponse} from "./pay-by-token";
 import {resolve} from "url";
+import {IPayByPrimeParams, IPayByPrimeResponse} from "./interface/pay-by-prime";
+import {IPayByTokenParams, IPayByTokenResponse} from "./interface/pay-by-token";
+import {IRefundParams, IRefundResponse} from "./interface/refund";
 
 // types & interfaces
 export type TAPPAY_ENV = "sandbox" | "production";
@@ -22,19 +23,32 @@ export default class TappayService {
     this.apiEndpoint = (env === "sandbox") ? SANDBOX_ENDPOINT : PROD_ENDPOINT;
   }
 
-  /*
-    https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-prime-api
-  */
+  /**
+   * payByPrime
+   * https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-prime-api
+   * @param data IPayByPrimeParams
+   */
   public payByPrime(data: IPayByPrimeParams): Promise<IPayByPrimeResponse> {
     return this.makeApiRequest("/tpc/payment/pay-by-prime", data)
     .then(response => response.data);
   }
 
-  /*
-    https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-card-token-api
-  */
+  /**
+   * payByCardToken
+   * https://docs.tappaysdk.com/tutorial/en/back.html#pay-by-card-token-api
+   * @param data IPayByTokenParams
+   */
   public payByCardToken(data: IPayByTokenParams): Promise<IPayByTokenResponse> {
     return this.makeApiRequest("/tpc/payment/pay-by-token", data)
+    .then(response => response.data);
+  }
+
+  /**
+   * refund
+   * @param data IRefundParams
+   */
+  public refund(data: IRefundParams): Promise<IRefundResponse> {
+    return this.makeApiRequest("/tpc/transaction/refund", data)
     .then(response => response.data);
   }
 
