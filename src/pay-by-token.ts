@@ -15,7 +15,7 @@ export interface IPayByTokenParams {
   /**
    * The letter abbreviation for currency, following ISO 4217.
    */
-  currency?: string;
+  currency: string;
   /**
    * A self-defined identifier for each transaction, for TapPay to identify transaction.
    */
