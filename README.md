@@ -1,13 +1,15 @@
 # Tappay ![npm version](https://img.shields.io/npm/v/tappay.svg?style=flat)
-tappay backend api nodejs sdk
+Nodejs sdk for Tappay backend API
+https://docs.tappaysdk.com/tutorial/zh/back.html#overview 
 
-## install
+## Installation
+requires node v6 or higher
 ```
 npm install tappay
 yarn install tappay
 ```
 
-## usage
+## Usage
 ### import
 ``` js
 // typescript
@@ -72,7 +74,7 @@ service.refund({
 });
 ```
 
-## tesing
+## Testing
 testing require your own partnerKey and merchantID
 ```
 TAPPAY_API_KEY="partner_blablabla" TAPPAY_MERCHANT_ID="your_marchant_id" npm run test
