@@ -1,4 +1,6 @@
 # Tappay ![npm version](https://img.shields.io/npm/v/tappay.svg?style=flat)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/tappay.svg)](https://greenkeeper.io/)
 Nodejs sdk for Tappay backend API
 https://docs.tappaysdk.com/tutorial/zh/back.html#overview 
 
